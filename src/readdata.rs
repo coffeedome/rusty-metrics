@@ -2,7 +2,7 @@ use regex::Regex;
 use std::collections::HashMap;
 use std::fs;
 
-pub fn process_data(input: &str) {
+pub fn process_data(input: &str) -> HashMap<String, i32> {
     //input should be a chunk:
     let cnt_raw = fs::read_to_string(input).expect("Input not found");
 
@@ -29,7 +29,9 @@ pub fn process_data(input: &str) {
         *count += 1;
     }
 
-    for (k, v) in &map {
-        println!("{}: {}", k, v);
-    }
+    // for (k, v) in &map {
+    //     println!("{}: {}", k, v);
+    // }
+
+    return map;
 }
