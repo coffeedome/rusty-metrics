@@ -1,5 +1,6 @@
 mod readdata;
 use std::fs;
+use std::collections::HashMap;
 
 fn main() {
     //put stdin in 1 MB files in the same databucket directory:
@@ -35,7 +36,20 @@ fn main() {
         assert!(global_vec.len()==integrity_val, true);
     }
 
-    //merge all hashmaps
-    //https://docs.rs/object-merge/0.1.0-alpha1/object_merge/
+    //Generate final mapping 
+    let mut final_map = HashMap::new();
+    for mapping in global_vec.iter(){
+        final_map.extend(mapping);
+    }
+
+    //Generate sorted vector:
+    let mut final_map_vec: Vec<(&String, &i32)> = final_map.into_iter().collect();
+    final_map_vec.sort_by(|a, b| b.1.cmp(&a.1));
+    println!("{:?}", final_map_vec);
+    
+
+    // for (key, value) in &final_map {
+    //     println!("{}: {}", key, value);
+    // }
 
 }

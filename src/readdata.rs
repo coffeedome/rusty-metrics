@@ -29,9 +29,5 @@ pub fn process_data(input: &str) -> HashMap<String, i32> {
         *count += 1;
     }
 
-    // for (k, v) in &map {
-    //     println!("{}: {}", k, v);
-    // }
-
     return map;
 }
