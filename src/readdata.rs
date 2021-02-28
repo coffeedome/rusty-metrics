@@ -21,12 +21,10 @@ pub fn process_data(input: &str) {
     //PROCESS:::capture all 3-string sequences:
     let rgx = Regex::new(r"((?:\S+\s){2}\S+)\s").unwrap();
 
-    let mut map = HashMap::new();
-
     //iterate over capture groups: https://docs.rs/regex/1.4.3/regex/#example-iterating-over-capture-groups
     //increment value based on key; if key does not exist then insert it.
+    let mut map = HashMap::new();
     for n in rgx.captures_iter(&rgx_ln_brk_out) {
-        //println!("{:?}", &n[1]);
         let count = map.entry(n[1].to_string()).or_insert(0);
         *count += 1;
     }
@@ -34,14 +32,4 @@ pub fn process_data(input: &str) {
     for(k,v) in &map{
         println!("{}: {}", k,v);
     }
-    
-
-    //Count elements and freq:
-    // let mut metrics_map = HashMap::new();
-    // for item in rgx.captures_iter(&rgx_ln_brk_out) {
-    //     let counter = metrics_map.entry(item[1]).or_insert(0)
-    //     *counter += 1;
-    // };
-
-    // println!("{:#?}", metrics_map);
 }
