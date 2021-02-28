@@ -21,8 +21,7 @@ pub fn process_data(input: &str) -> HashMap<String, i32> {
     //PROCESS:::capture all 3-string sequences:
     let rgx = Regex::new(r"((?:\S+\s){2}\S+)\s").unwrap();
 
-    //iterate over capture groups: https://docs.rs/regex/1.4.3/regex/#example-iterating-over-capture-groups
-    //increment value based on key; if key does not exist then insert it.
+    //iterate over capture groups and increment value based on key; if key does not exist then insert it.
     let mut map = HashMap::new();
     for n in rgx.captures_iter(&rgx_ln_brk_out) {
         let count = map.entry(n[1].to_string()).or_insert(0);

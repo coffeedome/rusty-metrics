@@ -1,9 +1,12 @@
 mod readdata;
-use std::fs;
+mod stdin_handler;
+
 use std::collections::HashMap;
+use std::fs;
 
 fn main() {
-    //put stdin in 1 MB files in the same databucket directory:
+    //put stdin in file in directory
+    let _ = stdin_handler::read_stdin();
 
     //Mutable global vector:
     let mut global_vec = Vec::new();
@@ -18,7 +21,6 @@ fn main() {
     if is_empty {
         println!("WARNING: No data to analyze. Verify stdin is nonempty and/or data files are in /databucket")
     } else {
-
         //Loop through files in directory:
         for path in paths {
             //Push resulting hashmap onto vector
@@ -33,12 +35,12 @@ fn main() {
 
         //Explicit re-scan of directory to validate post-run integrity:
         let integrity_val = fs::read_dir("databucket").unwrap().count();
-        assert!(global_vec.len()==integrity_val, true);
+        assert!(global_vec.len() == integrity_val, true);
     }
 
-    //Generate final mapping 
+    //Generate final mapping
     let mut final_map = HashMap::new();
-    for mapping in global_vec.iter(){
+    for mapping in global_vec.iter() {
         final_map.extend(mapping);
     }
 
@@ -46,10 +48,4 @@ fn main() {
     let mut final_map_vec: Vec<(&String, &i32)> = final_map.into_iter().collect();
     final_map_vec.sort_by(|a, b| b.1.cmp(&a.1));
     println!("{:?}", final_map_vec);
-    
-
-    // for (key, value) in &final_map {
-    //     println!("{}: {}", key, value);
-    // }
-
 }
