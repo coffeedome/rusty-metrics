@@ -1,7 +1,8 @@
 
 The intervals between the horizontal lines in the diagram, may represent
 each a thousand or more generations. After a thousand generations,
-species (A) is supposed to have produced two fairly well-marked
+these two varieties be variable but in a more and more modified
+species but in a more and more modified (A) is supposed to have produced two fairly well-marked
 varieties, namely a1 and m1. These two varieties will generally still
 be exposed to the same conditions which made their parents variable, and
 the tendency to variability is in itself hereditary; consequently they
@@ -29,4 +30,4 @@ the varieties or modified descendants of the common parent (A), will
 generally go on increasing in number and diverging in character. In the
 diagram the process is represented up to the ten-thousandth generation,
 and under a condensed and simplified form up to the fourteen-thousandth
-generation.
+generation.these two varieties be variable
