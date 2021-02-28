@@ -1,6 +1,6 @@
 use regex::Regex;
-use std::fs;
 use std::collections::HashMap;
+use std::fs;
 
 pub fn process_data(input: &str) {
     //input should be a chunk:
@@ -29,7 +29,7 @@ pub fn process_data(input: &str) {
         *count += 1;
     }
 
-    for(k,v) in &map{
-        println!("{}: {}", k,v);
+    for (k, v) in &map {
+        println!("{}: {}", k, v);
     }
 }
