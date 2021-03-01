@@ -45,7 +45,9 @@ You can then view the program output in the validate_output.txt file.
 ### Upcoming features:
 - **Rustlang is a compiled language** and as such the compiled binary can be run on any machine without needing to have rust installed. The next feature will include a binary that can take arguments to perform the same tasks without needing cargo/rustc.
 - **N string sequence**: The program is currently hard-coded to capture 3-word sequences. With parameters this can be extended to "N" count of words in sequence.
-- **Run in container**: Dockerfile included to run on Alpine Linux container. This will include a small set RESTful APIs for accessibility via multiple types of clients (e.g. Postman, ReactJS, etc.)
+- **Run in container**: Dockerfile included to run on Alpine Linux container. This will include a small set RESTful APIs for accessibility via multiple types of thin clients (e.g. Postman, ReactJS, etc.)
+- **Code coverage and static analysis**: the current code has a couple of assertions; more assertions will be added and Sonarqube implemented for static analysis.
+- **Instrumentation for APM metrics with OpenTracing API**: some key methods will be instrumented with OpenTracing API in order to observe performance and make future performance improvements.
 
 ### Known issues:
 - The program's output format is as follows:
