@@ -41,6 +41,22 @@ cat <filename> | cargo run > validate_output.txt
 
 You can then view the program output in the validate_output.txt file.
 
+## Test Cases:
+
+### Test Case 1:
+- ** Title: ** Program works on multiple input files
+- ** Description: ** The user can run the program on more than one input file
+- ** Precodition: ** The user has carried out the pre-steps above
+- ** Test Steps: **
+  1) Place more than one file in a directory called "testfiles" in the root of the cloned repo
+  2)Run:
+    ```
+    cargo run "testfiles" > validate_output.txt
+    ```
+  3) View the program output in the validate_output.txt file.
+  4) Paste the contents on an Excel spreadsheet to verify that there are 100 lines, descending by frequency
+  
+
 ## Open Items:
 ### Upcoming features:
 - **Rustlang is a compiled language** and as such the compiled binary can be run on any machine without needing to have rust installed. The next feature will include a binary that can take arguments to perform the same tasks without needing cargo/rustc.
