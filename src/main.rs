@@ -5,12 +5,14 @@ use std::env;
 
 fn main() {
 
-    //put stdin in file in directory:
-    let input = env::args().nth(1).unwrap();
-    if input == "-" {
-        let _ = stdin_handler::read_stdin();
+    let input = env::args().nth(1);
+    //if input is nothing then look in stdin:
+    if input.is_none() {
+        input.unwrap(); //if no stdin this will throw an error
+        stdin_handler::read_stdin();
+    } else {
+    //otherwise take input as name of directory (e.g. "databucket")
+        files_handler::handle_files(&input.unwrap());
     }
-    //process all data:
-    files_handler::handle_files("databucket");
 
 }
