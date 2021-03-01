@@ -50,6 +50,8 @@ You can then view the program output in the validate_output.txt file.
 - **Instrumentation for APM metrics with OpenTracing API**: some key methods will be instrumented with OpenTracing API in order to observe performance and make future performance improvements.
 
 ### Known issues:
+- **Empty stdin handling** - Stdin validation is still pending. Placeholder note until fix pushed: Note: You are running with default stdin input option. The program will run indefinitely if no stdin is provided (via '|')"
+
 - The program's output format is as follows:
 ```
 ("at the present", 13)
