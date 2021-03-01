@@ -3,9 +3,7 @@ mod readdata;
 use std::collections::HashMap;
 use std::fs;
 
-
-pub fn handle_files(datadirectory: &str){
-
+pub fn handle_files(datadirectory: &str) {
     //Mutable global vector:
     let mut global_vec = Vec::new();
 
@@ -51,5 +49,4 @@ pub fn handle_files(datadirectory: &str){
     for top_x in &final_map_vec[..100] {
         println!("{:?}", top_x);
     }
-
 }
