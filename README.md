@@ -27,7 +27,7 @@ Once rustc and cargo are installed, go to the root of the cloned repository
 - Place the text file(s) in a directory
 - Run:
 ```
-cargo run "<name of directory>" > validate_output.txt
+cargo run "databucket" > validate_output.txt
 ```
 You can then view the program output in the validate_output.txt file.
 
@@ -36,7 +36,7 @@ You can then view the program output in the validate_output.txt file.
 #### Getting word-sequence counts from stdin
 - Run:
 ```
-cat <filename> | cargo run > validate_output.txt
+cat <filename> | cargo run "databucket" > validate_output.txt
 ```
 
 You can then view the program output in the validate_output.txt file.
@@ -44,14 +44,26 @@ You can then view the program output in the validate_output.txt file.
 ## Test Cases:
 
 ### Test Case 1:
-- ** Title: ** Program works on multiple input files
-- ** Description: ** The user can run the program on more than one input file
-- ** Precodition: ** The user has carried out the pre-steps above
-- ** Test Steps: **
-  1) Place more than one file in a directory called "testfiles" in the root of the cloned repo
+- **Title:** Program works on multiple input files
+- **Description:** The user can run the program on more than one input file
+- **Precodition:** The user has carried out the pre-steps above
+- **Test Steps:**
+  1) Place more than one file in the "databucket" directory at the root of the cloned repo
   2)Run:
     ```
-    cargo run "testfiles" > validate_output.txt
+    cargo run "databucket" > validate_output.txt
+    ```
+  3) View the program output in the validate_output.txt file. *Note:* you can also print output directly to stdout by omitting the ```> validate_output.txt``` part of the command.
+  4) Paste the contents on an Excel spreadsheet to verify that there are 100 lines, descending by frequency
+
+### Test Case 2:
+- **Title:** Program works on stdin
+- **Description:** The user can run the program on a piped input
+- **Precodition:** The user has carried out the pre-steps above
+- **Test Steps:**
+  1)Run:
+    ```
+    cat databucket/mobydick.txt | cargo run "databucket" > validate_output.txt
     ```
   3) View the program output in the validate_output.txt file.
   4) Paste the contents on an Excel spreadsheet to verify that there are 100 lines, descending by frequency
@@ -60,7 +72,7 @@ You can then view the program output in the validate_output.txt file.
 ## Open Items:
 ### Upcoming features:
 - **Rustlang is a compiled language** and as such the compiled binary can be run on any machine without needing to have rust installed. The next feature will include a binary that can take arguments to perform the same tasks without needing cargo/rustc.
-- **N string sequence**: The program is currently hard-coded to capture 3-word sequences. With parameters this can be extended to "N" count of words in sequence.
+- **N string sequence and N most frequent lines**: The program is currently hard-coded to capture 3-word sequences and print the 100 most common 3-sequence grouprs. With parameters this can be extended to "N" count of words in sequence and "Z" most frequent groups in the set.
 - **Run in container**: Dockerfile included to run on Alpine Linux container. This will include a small set RESTful APIs for accessibility via multiple types of thin clients (e.g. Postman, ReactJS, etc.)
 - **Code coverage and static analysis**: the current code has a couple of assertions; more assertions will be added and Sonarqube implemented for static analysis.
 - **Instrumentation for APM metrics with OpenTracing API**: some key methods will be instrumented with OpenTracing API in order to observe performance and make future performance improvements.
