@@ -39,7 +39,12 @@ pub fn handle_files(datadirectory: &str) {
 
     //Print top X entries from vector:
     //println!("{:#?}", &final_map_vec[..100]);
-    for top_x in &final_map_vec[..100] {
-        println!("{:?}", top_x);
+    print_metrics(final_map_vec, 100);
+    
+}
+
+fn print_metrics(datavec: Vec<(&String, &i32)>, count: usize){
+    for data in &datavec[..count]{
+        println!("{:?}", data);
     }
 }
