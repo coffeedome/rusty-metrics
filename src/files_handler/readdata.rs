@@ -3,27 +3,43 @@ use std::collections::HashMap;
 use std::fs;
 
 pub fn process_data(input: &str) -> HashMap<String, i32> {
-    //input should be a chunk:
-    let cnt_raw = fs::read_to_string(input).expect("Input not found");
+    // //PRE-PROCESS:::convert all to lower case:
+    let cnt_str = preprocess_data(input);
 
-    //PRE-PROCESS:::convert all to lower case:
-    let cnt = cnt_raw.to_lowercase();
-    let cnt_str = cnt.as_str();
-
-    //PRE-PROCESS:::replace all special characters with empty string:
-    let rgx_special_char = Regex::new(r"[$&+,:;=?@#|'<>.^*()%!-]").unwrap();
-    let rgx_special_char_out = rgx_special_char.replace_all(&cnt_str, "");
-
-    //PRE-PROCESS:::replace all line breaks with spaces:
-    let rgx_ln_brk = Regex::new(r"\n").unwrap();
-    let rgx_ln_brk_out = rgx_ln_brk.replace_all(&rgx_special_char_out, " ");
+    //PRE-PROCESS:::remove all line-breaks:
+    let data_no_special_chars = preprocess_data_regex(cnt_str, "[$&+,:;=?@#|'<>.^*()%!-]", "");
+    let data_ready = preprocess_data_regex(data_no_special_chars, "\n", " ");
 
     //PROCESS:::capture all 3-string sequences:
-    let rgx = Regex::new(r"((?:\S+\s){2}\S+)\s").unwrap();
+    return capture_word_sequence(data_ready);
+}
 
-    //iterate over capture groups and increment value based on key; if key does not exist then insert it.
+//Function all uppers to lower case
+fn preprocess_data(input: &str) -> String {
+    let cnt_raw = fs::read_to_string(input)
+        .unwrap()
+        .to_lowercase()
+        .to_string();
+
+    return cnt_raw;
+}
+
+//Function cleans up string data based on regex match
+fn preprocess_data_regex(data: String, regex_string: &str, replacement: &str) -> String {
+    let regex_metachar = regex::escape(regex_string);
+    let rgx_special_chars = Regex::new(&regex_metachar)
+        .unwrap()
+        .replace_all(&data, replacement)
+        .to_string();
+    return rgx_special_chars;
+}
+
+//Generate hashmap <sequence, count> //TODO: parametrize num spaces
+fn capture_word_sequence(regex_string: String) -> HashMap<String, i32> {
+    let num_space_regex = Regex::new(r"((?:\S+\s){2}\S+)\s").unwrap();
+
     let mut map = HashMap::new();
-    for n in rgx.captures_iter(&rgx_ln_brk_out) {
+    for n in num_space_regex.captures_iter(&regex_string) {
         let count = map.entry(n[1].to_string()).or_insert(0);
         *count += 1;
     }

@@ -25,7 +25,6 @@ pub fn handle_files(datadirectory: &str) {
     //Explicit re-scan of directory to validate post-run integrity:
     let integrity_val = fs::read_dir(datadirectory).unwrap().count();
     assert!(global_vec.len() == integrity_val, true);
-    
 
     //Generate final mapping
     let mut final_map = HashMap::new();
@@ -37,9 +36,12 @@ pub fn handle_files(datadirectory: &str) {
     let mut final_map_vec: Vec<(&String, &i32)> = final_map.into_iter().collect();
     final_map_vec.sort_by(|a, b| b.1.cmp(&a.1));
 
-    //Print top X entries from vector:
-    //println!("{:#?}", &final_map_vec[..100]);
-    for top_x in &final_map_vec[..100] {
-        println!("{:?}", top_x);
+    print_metrics(final_map_vec, 100);
+}
+
+//print vector
+fn print_metrics(datavec: Vec<(&String, &i32)>, count: usize) {
+    for data in &datavec[..count] {
+        println!("{:?}", data);
     }
 }
