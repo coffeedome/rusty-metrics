@@ -3,13 +3,11 @@ use std::collections::HashMap;
 use std::fs;
 
 pub fn process_data(input: &str) -> HashMap<String, i32> {
-    //input should be a chunk:
-    // let cnt_raw = fs::read_to_string(input).expect("Input not found");
 
     // //PRE-PROCESS:::convert all to lower case:
     let cnt_str = preprocess_data(input);
 
-    //PRE-PROCESS:::data pre-processing:
+    //PRE-PROCESS:::remove all line-breaks:
     let data_no_special_chars = preprocess_data_regex(cnt_str, "[$&+,:;=?@#|'<>.^*()%!-]", "");
     let data_ready = preprocess_data_regex(data_no_special_chars, "\n", " ");
 
