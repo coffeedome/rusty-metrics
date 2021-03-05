@@ -12,5 +12,5 @@ fn main() {
     }
 
     //Look for all files in databucket directory, including stdin buffer:
-    files_handler::handle_files("databucket");
+    files_handler::handle_files("databucket", 5);
 }

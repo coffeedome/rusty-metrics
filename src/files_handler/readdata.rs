@@ -2,7 +2,7 @@ use regex::Regex;
 use std::collections::HashMap;
 use std::fs;
 
-pub fn process_data(input: &str) -> HashMap<String, i32> {
+pub fn process_data(input: &str, wordsequence: i32) -> HashMap<String, i32> {
     // //PRE-PROCESS:::convert all to lower case:
     let cnt_str = preprocess_data(input);
 
@@ -11,7 +11,7 @@ pub fn process_data(input: &str) -> HashMap<String, i32> {
     let data_ready = preprocess_data_regex(data_no_special_chars, "\n", " ");
 
     //PROCESS:::capture all 3-string sequences:
-    return capture_word_sequence(data_ready);
+    return capture_word_sequence(data_ready, wordsequence);
 }
 
 //Function all uppers to lower case
@@ -35,8 +35,16 @@ fn preprocess_data_regex(data: String, regex_string: &str, replacement: &str) ->
 }
 
 //Generate hashmap <sequence, count> //TODO: parametrize num spaces
-fn capture_word_sequence(regex_string: String) -> HashMap<String, i32> {
-    let num_space_regex = Regex::new(r"((?:\S+\s){2}\S+)\s").unwrap();
+fn capture_word_sequence(regex_string: String, numspaces: i32) -> HashMap<String, i32> {
+
+    //Word sequence to space sequence
+    let word_seq_count = (numspaces - 1 ).to_string();
+
+    //Word regex:
+    let word_seq_regex = format!("{}{}{}","((?:\\S+\\s){",word_seq_count,"}\\S+)\\s");
+
+    //Regex using sequence
+    let num_space_regex = Regex::new(&word_seq_regex).unwrap();
 
     let mut map = HashMap::new();
     for n in num_space_regex.captures_iter(&regex_string) {
