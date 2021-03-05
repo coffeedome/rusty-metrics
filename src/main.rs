@@ -17,5 +17,5 @@ fn main() {
     }
 
     //Look for all files in databucket directory, including stdin buffer:
-    files_handler::handle_files("databucket", wordseqcount);
+    files_handler::handle_files(source.unwrap().as_str(), wordseqcount);
 }

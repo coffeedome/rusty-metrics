@@ -29,12 +29,20 @@ Once rustc and cargo are installed, go to the root of the cloned repository
 ```
 cargo run databucket 3 > validate_output.txt
 ```
+You can also run the program with any of the following:
+```
+cargo run <directory with files> <word count sequence> > validate_output.txt
+```
 You can then view the program output in the validate_output.txt file.
 
-*Note:* the repo already contains a "/databucket" directory with Moby Dick and Origin of Species for test purposes.
+*Note:* the repo already contains "databucket" directory with Moby Dick and Origin of Species for test purposes.
 
 #### Getting word-sequence counts from stdin
 - Run:
+```
+cat databucket/mobydick.txt | cargo run databucket 3 > validate_output.txt
+```
+You can also run the program with any of the following:
 ```
 cat <filename> | cargo run databucket 3 > validate_output.txt
 ```
