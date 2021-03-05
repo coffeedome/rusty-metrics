@@ -41,7 +41,7 @@ pub fn handle_files(datadirectory: &str, word_sequence: i32) {
 
 //print vector
 fn print_metrics(datavec: Vec<(&String, &i32)>, count: usize) {
-    for data in &datavec[..count] {
-        println!("{:?}", data);
+    for (k,v) in &datavec[..count] {
+        println!("{} - {}", k, v);
     }
 }
