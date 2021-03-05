@@ -27,7 +27,7 @@ Once rustc and cargo are installed, go to the root of the cloned repository
 - Place the text file(s) in a directory
 - Run:
 ```
-cargo run "databucket" > validate_output.txt
+cargo run databucket 3 > validate_output.txt
 ```
 You can then view the program output in the validate_output.txt file.
 
@@ -36,7 +36,7 @@ You can then view the program output in the validate_output.txt file.
 #### Getting word-sequence counts from stdin
 - Run:
 ```
-cat <filename> | cargo run databucket <word sequence count e.g. 3> > validate_output.txt
+cat <filename> | cargo run databucket 3 > validate_output.txt
 ```
 
 You can then view the program output in the validate_output.txt file.
@@ -51,7 +51,7 @@ You can then view the program output in the validate_output.txt file.
   1) Place more than one file in the "databucket" directory at the root of the cloned repo
   2)Run:
     ```
-    cargo run databucket <word sequence count e.g. 3> > validate_output.txt
+    cargo run databucket 3 > validate_output.txt
     ```
   3) View the program output in the validate_output.txt file. *Note:* you can also print output directly to stdout by omitting the ```> validate_output.txt``` part of the command.
   4) Paste the contents on an Excel spreadsheet to verify that there are 100 lines, descending by frequency
@@ -63,7 +63,7 @@ You can then view the program output in the validate_output.txt file.
 - **Test Steps:**
   1)Run:
     ```
-    cat databucket/mobydick.txt | cargo run "databucket" > validate_output.txt
+    cat databucket/mobydick.txt | cargo run databucket 3 > validate_output.txt
     ```
   3) View the program output in the validate_output.txt file.
   4) Paste the contents on an Excel spreadsheet to verify that there are 100 lines, descending by frequency
