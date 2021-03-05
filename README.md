@@ -29,7 +29,7 @@ Once rustc and cargo are installed, go to the root of the cloned repository
 ```
 cargo run databucket 3 > validate_output.txt
 ```
-You can also run the program with any of the following:
+You can also run the program with the following parameters:
 ```
 cargo run <directory with files> <word count sequence> > validate_output.txt
 ```
@@ -42,7 +42,7 @@ You can then view the program output in the validate_output.txt file.
 ```
 cat databucket/mobydick.txt | cargo run databucket 3 > validate_output.txt
 ```
-You can also run the program with any of the following:
+You can also run the program with the following parameters:
 ```
 cat <filename> | cargo run databucket 3 > validate_output.txt
 ```
