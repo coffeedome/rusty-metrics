@@ -27,16 +27,24 @@ Once rustc and cargo are installed, go to the root of the cloned repository
 - Place the text file(s) in a directory
 - Run:
 ```
-cargo run "databucket" > validate_output.txt
+cargo run databucket 3 > validate_output.txt
+```
+You can also run the program with the following parameters:
+```
+cargo run <directory with files> <word count sequence> > validate_output.txt
 ```
 You can then view the program output in the validate_output.txt file.
 
-*Note:* the repo already contains a "/databucket" directory with Moby Dick and Origin of Species for test purposes.
+*Note:* the repo already contains "databucket" directory with Moby Dick and Origin of Species for test purposes.
 
 #### Getting word-sequence counts from stdin
 - Run:
 ```
-cat <filename> | cargo run "databucket" > validate_output.txt
+cat databucket/mobydick.txt | cargo run databucket 3 > validate_output.txt
+```
+You can also run the program with the following parameters:
+```
+cat <filename> | cargo run databucket 3 > validate_output.txt
 ```
 
 You can then view the program output in the validate_output.txt file.
@@ -51,7 +59,7 @@ You can then view the program output in the validate_output.txt file.
   1) Place more than one file in the "databucket" directory at the root of the cloned repo
   2)Run:
     ```
-    cargo run "databucket" > validate_output.txt
+    cargo run databucket 3 > validate_output.txt
     ```
   3) View the program output in the validate_output.txt file. *Note:* you can also print output directly to stdout by omitting the ```> validate_output.txt``` part of the command.
   4) Paste the contents on an Excel spreadsheet to verify that there are 100 lines, descending by frequency
@@ -63,7 +71,7 @@ You can then view the program output in the validate_output.txt file.
 - **Test Steps:**
   1)Run:
     ```
-    cat databucket/mobydick.txt | cargo run "databucket" > validate_output.txt
+    cat databucket/mobydick.txt | cargo run databucket 3 > validate_output.txt
     ```
   3) View the program output in the validate_output.txt file.
   4) Paste the contents on an Excel spreadsheet to verify that there are 100 lines, descending by frequency
@@ -80,14 +88,6 @@ You can then view the program output in the validate_output.txt file.
 ### Known issues:
 - **Empty stdin handling** - Stdin validation is still pending. Placeholder note until fix pushed: Note: You are running with default stdin input option. The program will run indefinitely if no stdin is provided (via '|')"
 
-- The program's output format is as follows:
-```
-("at the present", 13)
-```
-... whereas the output should be as follows:
-```
-at the present - 13
-```
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

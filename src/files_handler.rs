@@ -3,7 +3,7 @@ mod readdata;
 use std::collections::HashMap;
 use std::fs;
 
-pub fn handle_files(datadirectory: &str) {
+pub fn handle_files(datadirectory: &str, word_sequence: i32) {
     //Mutable global vector:
     let mut global_vec = Vec::new();
 
@@ -15,7 +15,7 @@ pub fn handle_files(datadirectory: &str) {
         //Push resulting hashmap onto vector
         global_vec.push(
             //fn- input:file str; output:hashmap
-            readdata::process_data(path.unwrap().path().to_str().unwrap()),
+            readdata::process_data(path.unwrap().path().to_str().unwrap(), word_sequence),
         );
     }
 
@@ -41,7 +41,7 @@ pub fn handle_files(datadirectory: &str) {
 
 //print vector
 fn print_metrics(datavec: Vec<(&String, &i32)>, count: usize) {
-    for data in &datavec[..count] {
-        println!("{:?}", data);
+    for (k,v) in &datavec[..count] {
+        println!("{} - {}", k, v);
     }
 }
