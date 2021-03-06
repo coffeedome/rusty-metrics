@@ -1,19 +1,19 @@
-use std::fs::File;
 use std::io;
 use std::io::prelude::*;
+use std::collections::HashMap;
+use crate::process_data::process_data;
 
-pub fn read_stdin() {
+pub fn handle_stdin(word_sequence: i32) -> Vec<HashMap<String, i32>> {
     //Stdin to buffer:
-    let mut buffer = String::new();
-    let mut stdin = io::stdin();
-    stdin
-        .read_to_string(&mut buffer)
-        .expect("Unable to read stdin to string");
+    let mut global_vec = Vec::new();
 
-    //Generate buffer file:
-    let mut buffer_file =
-        File::create("databucket/buffer_file.txt").expect("Unable to create file");
-    buffer_file
-        .write_all(&buffer.as_bytes())
-        .expect("Unable to write to buffer file");
+    let stdin = io::stdin();
+    let input = stdin.lock().lines().next();
+            
+    global_vec.push(process_data(input.unwrap().unwrap().as_str(), word_sequence));
+
+    return global_vec;
+
+    
+
 }

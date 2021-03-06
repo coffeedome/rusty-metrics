@@ -1,5 +1,7 @@
 mod files_handler;
 mod stdin_handler;
+mod process_data;
+mod postprocess_data;
 
 use std::env;
 
@@ -10,12 +12,14 @@ fn main() {
     //Word sequence count:
     let wordseqcount = env::args().nth(2).unwrap().parse().unwrap();
 
-    //if input is nothing then look in stdin:
+    let final_vec;
+
     if source.is_none() {
-        println!("Note: You are running with default stdin input option. The program will run indefinitely if no stdin is provided (via '|')");
-        stdin_handler::read_stdin();
+        final_vec = stdin_handler::handle_stdin(wordseqcount);
+    } else {
+        final_vec = files_handler::handle_files(source.unwrap().as_str(), wordseqcount);
     }
 
-    //Look for all files in databucket directory, including stdin buffer:
-    files_handler::handle_files(source.unwrap().as_str(), wordseqcount);
+    postprocess_data::post_process(final_vec);
+    
 }
