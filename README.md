@@ -2,6 +2,8 @@
 
 Text analytics using Rust
 
+![build](https://github.com/estebanes22/rusty-metrics/actions/workflows/rust.yml/badge.svg)
+
 ## How to run program
 
 ### Pre-requisites:
