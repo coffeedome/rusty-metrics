@@ -6,24 +6,14 @@ Text analytics using Rust
 
 ## How to run program
 
-### Pre-requisites:
-Clone this repository:
-```
-git clone https://github.com/estebanes22/rusty-metrics.git
-```
 
-Install rustc and cargo:
-
-For macOS or Linux run:
-```
-curl https://sh.rustup.rs -sSf | sh
-```
 
 For Windows download and run [the installer](https://win.rustup.rs/)
 
 ### Running the program:
 
-Once rustc and cargo are installed, go to the root of the cloned repository
+Download the latest release via https://github.com/estebanes22/rusty-metrics/releases/new
+
 
 #### Getting word-sequence counts on multiple text files:
 - Place the text file(s) in a directory
