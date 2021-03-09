@@ -14,10 +14,9 @@ fn main() {
 
     let final_vec;
 
-    if source.is_none() {
-        final_vec = stdin_handler::handle_stdin(wordseqcount);
-    } else {
-        final_vec = files_handler::handle_files(source.unwrap().as_str(), wordseqcount);
+    match source {
+        None => final_vec = stdin_handler::handle_stdin(wordseqcount),
+        Some(_) => final_vec = files_handler::handle_files(source.unwrap().as_str(), wordseqcount),
     }
 
     postprocess_data::post_process(final_vec);
