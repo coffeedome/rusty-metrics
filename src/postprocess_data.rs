@@ -1,7 +1,6 @@
 use std::collections::HashMap;
 
-pub fn post_process(input_vector: Vec<HashMap<String, i32>>){
-
+pub fn post_process(input_vector: Vec<HashMap<String, i32>>) {
     //Generate final mapping
     let mut final_map = HashMap::new();
     for mapping in input_vector.iter() {
@@ -20,12 +19,11 @@ pub fn post_process(input_vector: Vec<HashMap<String, i32>>){
     } else {
         print_metrics(final_map_vec, final_map_vec_length);
     }
-    
 }
 
 //print vector
 fn print_metrics(datavec: Vec<(&String, &i32)>, count: usize) {
-    for (k,v) in &datavec[..count] {
+    for (k, v) in &datavec[..count] {
         println!("{} - {}", k, v);
     }
 }

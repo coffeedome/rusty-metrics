@@ -1,6 +1,6 @@
+use crate::process_data::process_data;
 use std::collections::HashMap;
 use std::fs;
-use crate::process_data::process_data;
 
 pub fn handle_files(datadirectory: &str, word_sequence: i32) -> Vec<HashMap<String, i32>> {
     //Mutable global vector:

@@ -1,7 +1,7 @@
 mod files_handler;
-mod stdin_handler;
-mod process_data;
 mod postprocess_data;
+mod process_data;
+mod stdin_handler;
 
 use std::env;
 
@@ -20,5 +20,4 @@ fn main() {
     }
 
     postprocess_data::post_process(final_vec);
-    
 }
