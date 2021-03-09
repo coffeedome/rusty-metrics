@@ -1,7 +1,7 @@
 mod files_handler;
-mod stdin_handler;
-mod process_data;
 mod postprocess_data;
+mod process_data;
+mod stdin_handler;
 
 use std::env;
 
@@ -14,12 +14,10 @@ fn main() {
 
     let final_vec;
 
-    if source.is_none() {
-        final_vec = stdin_handler::handle_stdin(wordseqcount);
-    } else {
-        final_vec = files_handler::handle_files(source.unwrap().as_str(), wordseqcount);
+    match source {
+        None => final_vec = stdin_handler::handle_stdin(wordseqcount),
+        Some(_) => final_vec = files_handler::handle_files(source.unwrap().as_str(), wordseqcount),
     }
 
     postprocess_data::post_process(final_vec);
-    
 }

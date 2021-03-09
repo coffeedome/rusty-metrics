@@ -36,12 +36,11 @@ fn preprocess_data_regex(data: String, regex_string: &str, replacement: &str) ->
 
 //Generate hashmap <sequence, count> //TODO: parametrize num spaces
 fn capture_word_sequence(regex_string: String, numspaces: i32) -> HashMap<String, i32> {
-
     //Word sequence to space sequence
-    let word_seq_count = (numspaces - 1 ).to_string();
+    let word_seq_count = (numspaces - 1).to_string();
 
     //Word regex:
-    let word_seq_regex = format!("{}{}{}","((?:\\S+\\s){",word_seq_count,"}\\S+)\\s");
+    let word_seq_regex = format!("{}{}{}", "((?:\\S+\\s){", word_seq_count, "}\\S+)\\s");
 
     //Regex using sequence
     let num_space_regex = Regex::new(&word_seq_regex).unwrap();
