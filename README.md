@@ -9,10 +9,10 @@ Text analytics using Rust
 Download the latest release via https://github.com/estebanes22/rusty-metrics/releases/new
 
 #### Directory use case:
-./rusty-metrics <directory containing file(s)> <word count sequence>
+```./rusty-metrics <directory containing file(s)> <word count sequence>```
 
 #### Pipe input:
-cat somefile.txt | ./rusty-metrics
+```cat somefile.txt | ./rusty-metrics```
 
 ## Open Items:
 ### Upcoming features:)
