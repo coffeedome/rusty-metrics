@@ -28,8 +28,9 @@ fn print_metrics(datavec: Vec<(&String, &i32)>, count: usize) {
     }
 }
 
-// #[test]
-// fn test_print_metrics() {
-//     let datavec: Vec<&String, &i32> = [("this is a test", 20)];
-//     print_metrics();
-// }
+#[test]
+fn test_print_metrics() {
+    let test_string = "print metrics testing is happening here";
+    let count: usize = 1;
+    print_metrics(vec![(&test_string.to_string(), &20)], count);
+}
